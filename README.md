@@ -1,2 +1,1 @@
-# Software-Eng-Profile
 # AuthenticationTemplate
