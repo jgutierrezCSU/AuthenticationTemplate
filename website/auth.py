@@ -12,7 +12,7 @@ auth=Blueprint('auth',__name__)
 @auth.route('/login/',methods=["GET","POST"])
 def login():
     if request.method == 'POST':
-        email = request.form.get('email')
+        email = request.form.get('emailLogin')
         password = request.form.get('password')
         #find User w/ Email
         user = User.query.filter_by(email=email).first() # should only be one user w/ unique email
