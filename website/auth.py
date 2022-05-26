@@ -46,6 +46,7 @@ def signup():
         first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+        print(email,first_name,password1,password2)
 
         #find User w/ Email
         #check if already a userw/ that email
@@ -61,15 +62,15 @@ def signup():
         elif len(password1) < 8:
                 flash('Password must be at least 8 characters.', category='error')
         else:
-            #store ne user in DB
+            #store new user in DB
             #generate a hashed PW and store
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(
                 password1, method='sha256'))
             db.session.add(new_user) #add new user to DB
             db.session.commit() # update
             #log in user to a session
-            login_user(user,remember=True)
+            login_user(new_user,remember=True)
             flash('Account created!', category='success')
             #after Log in , redirect Home
             return redirect(url_for('views.home'))
-    return render_template("signup.html",user=current_user)
+    return render_template("signup.html",user=current_user) # current_user from built in library
