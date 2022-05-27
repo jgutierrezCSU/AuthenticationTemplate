@@ -59,7 +59,7 @@ def signup():
                 flash('Enter Valid Name', category='error')
         elif password1 != password2:
                 flash('Passwords Do Not Match.', category='error')
-        elif len(password1) < 8:
+        elif len(password1) < 0:
                 flash('Password must be at least 8 characters.', category='error')
         else:
             #store new user in DB
